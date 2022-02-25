@@ -117,11 +117,6 @@ module "sql-server-cluster" {
         sqlStorageAccountReplicationType = "LRS"
         enableAcceleratedNetworking = true
     }
-    adConfig = {
-        "domainName": "shared.demo.ca",
-        "serverOUPath":"OU=Servers,OU=DemoApp,OU=Applications,OU=PSPC,DC=shared,DC=demo,DC=ca",
-        "accountOUPath": "OU=Service Accounts,OU=DemoApp,OU=Applications,OU=demo,DC=shared,DC=ca"
-    }
     backupConfig = {
         existingBackupVaultRG = "Demo-Shared-CRM-Backup-RG"
         existingBackupVaultName = "Demo-Shared-CRM-Backup-Vault"
