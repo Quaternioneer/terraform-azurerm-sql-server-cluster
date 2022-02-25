@@ -42,22 +42,22 @@ module "sql-server-cluster" {
 
     resource_group_name = "pws3-test-sql-cluster-rg"
     keyVaultConfig = {
-        existingRGName = "PwS3-GCPS-CRM-KeyVault-RG"
-        existingVaultName = "PwS3-CRM-Keyvault"
+        existingRGName = "NDkeyvaultRG"
+        existingVaultName = "skeletonkey"
         localAdminPasswordSecret = "server2016DefaultPassword"
     }
     secretPasswordName = "server2016DefaultPassword"
     vnetConfig = {
-        existingVnetName = "demo-Infra-NetShared-VNET"
-        existingVnetRG = "Demo-Infra-NetShared-RG"
-        sqlSubnet =  "10.250.29.0/26"
+        existingVnetName = "${var.resource_group_name}-vnet"
+        existingVnetRG = "${var.resource_group_name}-vnet"
+        sqlSubnet =  "10.0.4.0/24"
         dbSubnetName = "Demo-Shared-DB"
     }
-    location = "canadacentral"
+    location = "westus2"
     adminUsername = "azureadmin"
     sqlServerConfig = {
-        clusterIp = "169.254.1.15"
-        sqlLBIPAddress = "10.250.29.14"
+        clusterIp = "10.0.4.15"
+        sqlLBIPAddress = "10.0.4.14"
         sqlLBName = "TST-SWB"
         sqlAOListenerPort = "1433"
         vmSize = "Standard_DS3_v2"
