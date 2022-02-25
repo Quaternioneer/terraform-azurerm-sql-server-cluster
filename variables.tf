@@ -16,9 +16,9 @@ variable "secretPasswordName" {
 
 variable "vnetConfig" {
     default = {
-        existingVnetName = "PwS3-Infra-NetShared-VNET"
-        existingVnetRG = "PwS3-Infra-NetShared-RG"
-        sqlSubnet =  "10.250.29.0/26"
+        existingVnetName = "${var.resource_group_name}-vnet"
+        existingVnetRG = var.resource_group_name
+        sqlSubnet =  "10.0.0.4/24"
         dbSubnetName = "PwS3-Shared-DB-CRM"
     }
 }
@@ -112,9 +112,9 @@ variable "backupConfig" {
 variable "tagValues" {
     default = {
         "workload" = "Database"
-        "owner" = "john.nephin@tpsgc-pwgsc.gc.ca"
-        "businessUnit" = "PSPC-CCC"
-        "costCenterOwner" = "PSPC-EA"
+        "owner" = "Nathaniel Davila"
+        "businessUnit" = "Terraforming Mars"
+        "costCenterOwner" = "Occupy Mars"
         "environment" = "Sandbox"
         "classification" = "Unclassified"
         "version" = "0.1"
