@@ -38,7 +38,7 @@ The deployment assumes the following items are already deployed:
 
 ```terraform
 module "sql-server-cluster" {
-    source = "https://github.com/Quaternioneer/terraform-azurerm-sql-server-cluster"
+    source = "git@github.com:Quaternioneer/terraform-azurerm-sql-server-cluster.git"
 
     resource_group_name = "pws3-test-sql-cluster-rg"
     keyVaultConfig = {
