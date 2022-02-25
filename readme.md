@@ -38,14 +38,13 @@ The deployment assumes the following items are already deployed:
 
 ```terraform
 module "sql-server-cluster" {
-    source = "github.com/canada-ca-terraform-modules/terraform-azurerm-sql-server-cluster?ref=20200813.1"
+    source = "https://github.com/Quaternioneer/terraform-azurerm-sql-server-cluster"
 
     resource_group_name = "pws3-test-sql-cluster-rg"
     keyVaultConfig = {
         existingRGName = "PwS3-GCPS-CRM-KeyVault-RG"
         existingVaultName = "PwS3-CRM-Keyvault"
         localAdminPasswordSecret = "server2016DefaultPassword"
-        domainAdminPasswordSecret = "adDefaultPassword"
     }
     secretPasswordName = "server2016DefaultPassword"
     vnetConfig = {
@@ -56,8 +55,6 @@ module "sql-server-cluster" {
     }
     location = "canadacentral"
     adminUsername = "azureadmin"
-    domainUsername = "azureadmin"
-    dnsServerName = "DemoSharedDC01"
     sqlServerConfig = {
         clusterIp = "169.254.1.15"
         sqlLBIPAddress = "10.250.29.14"

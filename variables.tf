@@ -1,13 +1,12 @@
 variable "resource_group_name" {
-    default = "pws3-test-sql-cluster-rg"
+    default = "team9-project"
 }
 
 variable "keyVaultConfig" {
     default = {
-        existingRGName = "PwS3-GCPS-CRM-KeyVault-RG"
-        existingVaultName = "PwS3-CRM-Keyvault"
+        existingRGName = "NDkeyvaultRG"
+        existingVaultName = "statebox"
         localAdminPasswordSecret = "server2016DefaultPassword"
-        domainAdminPasswordSecret = "adDefaultPassword"
     }
 }
 
@@ -34,19 +33,10 @@ variable "adminUsername" {
     default = "azureadmin"
 }
 
-variable "domainUsername" {
-    description = "The name of the Administrator accounts used to join the domain and to create the service accounts"
-    default = "azureadmin"
-}
-
-variable "dnsServerName" {
-    default = "PwS3SharedDC01"
-}
-
 variable "sqlServerConfig" {
     default = {
-        clusterIp = "169.254.1.15"
-        sqlLBIPAddress = "10.250.29.14"
+        clusterIp = "10.0.4.15"
+        sqlLBIPAddress = "10.0.4.14"
         sqlLBName = "TST-SWB"
         sqlAOListenerPort = "1433"
         vmSize = "Standard_DS3_v2"
@@ -111,15 +101,6 @@ variable "witnessServerConfig" {
     
     }
 }
-
-variable "adConfig" {
-    default = {
-        "domainName": "shared.pws3.pspc-spac.ca",
-        "serverOUPath":"OU=Servers,OU=DG2,OU=GCCASE,OU=GCPS,OU=Applications,OU=PSPC,DC=shared,DC=pws3,DC=pspc-spac,DC=ca",
-        "accountOUPath": "OU=Service Accounts,OU=DG2,OU=GCCASE,OU=GCPS,OU=Applications,OU=PSPC,DC=shared,DC=pws3,DC=pspc-spac,DC=ca"
-    }
-}
-
 
 variable "backupConfig" {
     default = {
