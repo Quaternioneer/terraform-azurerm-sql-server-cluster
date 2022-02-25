@@ -17,7 +17,7 @@ variable "secretPasswordName" {
 variable "vnetConfig" {
     default = {
         existingVnetName = "demo-Infra-NetShared-VNET"
-        existingVnetRG = var.resource_group_name
+        existingVnetRG = "Demo-Infra-NetShared-RG"
         sqlSubnet =  "10.0.0.4/24"
         dbSubnetName = "PwS3-Shared-DB-CRM"
     }
