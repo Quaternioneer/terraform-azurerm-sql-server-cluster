@@ -8,10 +8,11 @@ data "azurerm_key_vault_secret" "localAdminPasswordSecret" {
   key_vault_id = "${data.azurerm_key_vault.keyvaultsecrets.id}"
 }
 
-data "azurerm_key_vault_secret" "domainAdminPasswordSecret" {
-  name         = "${var.keyVaultConfig.domainAdminPasswordSecret}"
-  key_vault_id = "${data.azurerm_key_vault.keyvaultsecrets.id}"
-}
+#Removed to reduce complexity
+#data "azurerm_key_vault_secret" "domainAdminPasswordSecret" {
+#  name         = "${var.keyVaultConfig.domainAdminPasswordSecret}"
+#  key_vault_id = "${data.azurerm_key_vault.keyvaultsecrets.id}"
+#}
 
 data "azurerm_key_vault_secret" "sqlAdminPasswordSecret" {
   name         = "${var.sqlServerConfig.sqlServerServiceAccountPasswordSecret}"
