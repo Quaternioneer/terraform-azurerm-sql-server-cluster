@@ -1,12 +1,13 @@
 variable "resource_group_name" {
-    default = "team9-project"
+    default = "pws3-test-sql-cluster-rg"
 }
 
 variable "keyVaultConfig" {
     default = {
-        existingRGName = "NDkeyvaultRG"
-        existingVaultName = "statebox"
+        existingRGName = "PwS3-GCPS-CRM-KeyVault-RG"
+        existingVaultName = "PwS3-CRM-Keyvault"
         localAdminPasswordSecret = "server2016DefaultPassword"
+        domainAdminPasswordSecret = "adDefaultPassword"
     }
 }
 
@@ -16,9 +17,9 @@ variable "secretPasswordName" {
 
 variable "vnetConfig" {
     default = {
-        existingVnetName = "demo-Infra-NetShared-VNET"
-        existingVnetRG = "Demo-Infra-NetShared-RG"
-        sqlSubnet =  "10.0.0.4/24"
+        existingVnetName = "PwS3-Infra-NetShared-VNET"
+        existingVnetRG = "PwS3-Infra-NetShared-RG"
+        sqlSubnet =  "10.250.29.0/26"
         dbSubnetName = "PwS3-Shared-DB-CRM"
     }
 }
@@ -33,10 +34,19 @@ variable "adminUsername" {
     default = "azureadmin"
 }
 
+variable "domainUsername" {
+    description = "The name of the Administrator accounts used to join the domain and to create the service accounts"
+    default = "azureadmin"
+}
+
+variable "dnsServerName" {
+    default = "PwS3SharedDC01"
+}
+
 variable "sqlServerConfig" {
     default = {
-        clusterIp = "10.0.4.15"
-        sqlLBIPAddress = "10.0.4.14"
+        clusterIp = "169.254.1.15"
+        sqlLBIPAddress = "10.250.29.14"
         sqlLBName = "TST-SWB"
         sqlAOListenerPort = "1433"
         vmSize = "Standard_DS3_v2"
@@ -102,6 +112,15 @@ variable "witnessServerConfig" {
     }
 }
 
+variable "adConfig" {
+    default = {
+        "domainName": "shared.pws3.pspc-spac.ca",
+        "serverOUPath":"OU=Servers,OU=DG2,OU=GCCASE,OU=GCPS,OU=Applications,OU=PSPC,DC=shared,DC=pws3,DC=pspc-spac,DC=ca",
+        "accountOUPath": "OU=Service Accounts,OU=DG2,OU=GCCASE,OU=GCPS,OU=Applications,OU=PSPC,DC=shared,DC=pws3,DC=pspc-spac,DC=ca"
+    }
+}
+
+
 variable "backupConfig" {
     default = {
         existingBackupVaultRG = "AzPwS01-Shared-CRM-Backup-RG"
@@ -120,4 +139,5 @@ variable "tagValues" {
         "version" = "0.1"
     }
 }
+
 
