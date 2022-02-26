@@ -111,7 +111,7 @@ resource "azurerm_network_interface_backend_address_pool_association" "sqlvm2BEA
 #Create the load balencer rules
 resource "azurerm_lb_rule" "sqlLBRule" {
   resource_group_name            = "${var.resource_group_name}"
-[O  loadbalancer_id                = "${azurerm_lb.sqlLB.id}"
+  loadbalancer_id                = "${azurerm_lb.sqlLB.id}"
   name                           = "${local.lbSettings.sqlLBName}-lbr"
   protocol                       = "Tcp"
   frontend_port                  = 1433
