@@ -157,7 +157,7 @@ module "sqlvm1" {
 
 #Create the secondary SQL Server
 module "sqlvm2" {
-  source = "github.com/canada-ca-terraform-modules/terraform-azurerm-basicwindowsvm?ref=20190927.1"
+  source = "github.com/Quaternioneer/terraform-azurerm-basicwindowsvm"
 
   name                    = "${local.vm2Name}"
   location                = "${var.location}"
@@ -182,7 +182,7 @@ module "sqlvm2" {
 
 #Create the SQL Witness.  Could be switched for a blob storage if desired
 module "sqlvmw" {
-  source = "github.com/canada-ca-terraform-modules/terraform-azurerm-basicwindowsvm?ref=20190927.1"
+  source = "github.com/Quaternioneer/terraform-azurerm-basicwindowsvm"
 
   name                    = "${var.witnessServerConfig.vmName}001"
   location                = "${var.location}"
