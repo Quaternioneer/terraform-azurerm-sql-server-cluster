@@ -133,7 +133,7 @@ resource "azurerm_lb_probe" "sqlLBProbe" {
 
 #Create the primary SQL server
 module "sqlvm1" {
-  source = "github.com/canada-ca-terraform-modules/terraform-azurerm-basicwindowsvm?ref=20190927.1"
+  source = "github.com/Quaternioneer/terraform-azurerm-basicwindowsvm"
 
   name                    = "${local.vm1Name}"
   location                = "${var.location}"
