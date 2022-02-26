@@ -30,6 +30,7 @@ data "azurerm_virtual_network" "vnet" {
 }
 
 # =============== TEMPLATES =============== #
-data "template_file" "sqlvm" {
-  template = file("./Templates/SQLVirtualMachine.json")
-}
+#Removed to reduce complexity
+#data "template_file" "sqlvm" {
+#  template = file("./Templates/SQLVirtualMachine.json")
+#}
